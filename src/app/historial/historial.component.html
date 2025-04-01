@@ -1,0 +1,17 @@
+<button (click)="agregarHistorial()"> Agregar Historial</button>
+
+<div *ngIf="(historiales$ | async) as historiales; else noData">
+  <div *ngFor="let historial of historiales" class="contenedor-historial">
+    <h3>ID: {{ historial._id }}</h3>
+    <p><strong>User ID:</strong> {{ historial.userId }}</p>
+    <p><strong>Drone ID:</strong> {{ historial.droneId }}</p>
+    <p><strong>Fecha:</strong> {{ historial.fecha | date: 'short' }}</p>
+
+    <button (click)="actualizarHistorial(historial._id)">✏️ Editar</button>
+    <button (click)="eliminarHistorial(historial._id)">🗑️ Eliminar</button>
+  </div>
+</div>
+
+<ng-template #noData>
+  <p>No se encontraron historiales.</p>
+</ng-template>

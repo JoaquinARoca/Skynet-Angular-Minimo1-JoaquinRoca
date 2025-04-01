@@ -25,7 +25,10 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
+  goToHistorial():void{
+    this.router.navigate(['/historial'])
+  }
+  
   goToDrones(): void {
     this.router.navigate(['/drones']);
   }
