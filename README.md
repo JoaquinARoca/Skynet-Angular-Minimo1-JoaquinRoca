@@ -1,6 +1,15 @@
-# AngularSeminari6
+# MINIMO 1 JR
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+
+## Referencias IA Utilizadas
+ - ChatGPT
+
+
+## Comentarios
+Falta llamada Create
+
+
 
 ## Ejercicio
 
