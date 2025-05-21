@@ -24,7 +24,7 @@ export class DronesComponent implements OnInit {
     private dronesService: DronesService,
     private fb: FormBuilder,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Obtenemos el userId actual (si está logueado)
@@ -82,7 +82,7 @@ export class DronesComponent implements OnInit {
 
     if (this.editing) {
       // Actualiza el dron
-      this.dronesService.update(this.currentDroneId, formValue).subscribe({
+      this.dronesService.update(this.currentDroneId, this.currentUserId!, this.droneForm.value).subscribe({
         next: () => {
           alert('Dron actualizado exitosamente.');
           this.loadDrones();
@@ -93,6 +93,7 @@ export class DronesComponent implements OnInit {
           alert(err.error?.message || 'Error al actualizar el dron.');
         }
       });
+
     } else {
       // Crea un nuevo dron
       this.dronesService.create(formValue).subscribe({

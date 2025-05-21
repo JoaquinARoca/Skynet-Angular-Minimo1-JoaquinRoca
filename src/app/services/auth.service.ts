@@ -25,8 +25,7 @@ export class AuthService {
   login(payload: LoginPayload): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, payload).pipe(
       tap((res: any) => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('userId', res.userId);
+        localStorage.setItem('userId', res._id);
       })
     );
   }
@@ -36,7 +35,6 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
     localStorage.removeItem('userId');
   }
 

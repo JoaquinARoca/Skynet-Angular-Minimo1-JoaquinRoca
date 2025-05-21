@@ -47,10 +47,10 @@ export class DronesService {
   }
 
   // Actualizar un dron
-  update(id: string, drone: Partial<Drone>): Observable<Drone> {
-    const headers = this.getAuthHeaders();
-    return this.http.put<Drone>(`${this.apiUrl}/${id}`, drone, { headers });
+  update(droneId: string, userId: string, droneData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${droneId}/${userId}`, droneData);
   }
+
 
   // Eliminar un dron
   delete(id: string): Observable<any> {

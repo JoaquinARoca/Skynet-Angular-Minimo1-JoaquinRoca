@@ -1,4 +1,55 @@
 <button (click)="agregarHistorial()"> Agregar Historial</button>
+<div class="historial-form-container" *ngIf="showForm">
+  <form [formGroup]="historialForm" (ngSubmit)="crearHistorial()">
+    <h3>Agregar Historial Manual</h3>
+    <label>User ID:</label>
+    <input type="text" formControlName="userId"><br>
+  
+    <label>Drone ID:</label>
+    <input type="text" formControlName="droneId"><br>
+  
+    <label>Nombre:</label>
+    <input type="text" formControlName="name"><br>
+  
+    <label>Modelo:</label>
+    <input type="text" formControlName="model"><br>
+  
+    <label>Precio:</label>
+    <input type="number" formControlName="price"><br>
+  
+    <label>Descripción:</label>
+    <textarea formControlName="description"></textarea><br>
+  
+    <label>Imágenes (separadas por coma):</label>
+    <input type="text" formControlName="images"><br>
+  
+    <label>Tipo:</label>
+    <select formControlName="type">
+      <option value="venta">Venta</option>
+      <option value="alquiler">Alquiler</option>
+    </select><br>
+  
+    <label>Condición:</label>
+    <select formControlName="condition">
+      <option value="nuevo">Nuevo</option>
+      <option value="usado">Usado</option>
+    </select><br>
+  
+    <label>Ubicación:</label>
+    <input type="text" formControlName="location"><br>
+  
+    <label>Contacto:</label>
+    <input type="text" formControlName="contact"><br>
+  
+    <label>Categoría:</label>
+    <input type="text" formControlName="category"><br>
+  
+    <label>Seller ID:</label>
+    <input type="text" formControlName="sellerId"><br>
+  
+    <button type="submit">Crear Historial</button>
+  </form>
+</div>
 
 <div *ngIf="(historiales$ | async) as historiales; else noData">
   <div *ngFor="let historial of historiales" class="contenedor-historial">
@@ -6,9 +57,61 @@
     <p><strong>User ID:</strong> {{ historial.userId }}</p>
     <p><strong>Drone ID:</strong> {{ historial.droneId }}</p>
     <p><strong>Fecha:</strong> {{ historial.fecha | date: 'short' }}</p>
-
-    <button (click)="actualizarHistorial(historial._id)">✏️ Editar</button>
+    
+    <button (click)="actualizarFormHistorial()">✏️ Editar</button>
     <button (click)="eliminarHistorial(historial._id)">🗑️ Eliminar</button>
+
+    <div class="historial-form-container" *ngIf="showEditForm">
+      <form [formGroup]="historialForm" (ngSubmit)="actualizarHistorial(historial._id)">
+        <h3>Agregar Historial Manual</h3>
+        <label>User ID:</label>
+        <input type="text" formControlName="userId"><br>
+      
+        <label>Drone ID:</label>
+        <input type="text" formControlName="droneId"><br>
+      
+        <label>Nombre:</label>
+        <input type="text" formControlName="name"><br>
+      
+        <label>Modelo:</label>
+        <input type="text" formControlName="model"><br>
+      
+        <label>Precio:</label>
+        <input type="number" formControlName="price"><br>
+      
+        <label>Descripción:</label>
+        <textarea formControlName="description"></textarea><br>
+      
+        <label>Imágenes (separadas por coma):</label>
+        <input type="text" formControlName="images"><br>
+      
+        <label>Tipo:</label>
+        <select formControlName="type">
+          <option value="venta">Venta</option>
+          <option value="alquiler">Alquiler</option>
+        </select><br>
+      
+        <label>Condición:</label>
+        <select formControlName="condition">
+          <option value="nuevo">Nuevo</option>
+          <option value="usado">Usado</option>
+        </select><br>
+      
+        <label>Ubicación:</label>
+        <input type="text" formControlName="location"><br>
+      
+        <label>Contacto:</label>
+        <input type="text" formControlName="contact"><br>
+      
+        <label>Categoría:</label>
+        <input type="text" formControlName="category"><br>
+      
+        <label>Seller ID:</label>
+        <input type="text" formControlName="sellerId"><br>
+      
+        <button type="submit">Editar Historial</button>
+      </form>
+    </div>
   </div>
 </div>
 

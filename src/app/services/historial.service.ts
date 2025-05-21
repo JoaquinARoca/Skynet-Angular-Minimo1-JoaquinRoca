@@ -12,18 +12,18 @@ export class HistorialService {
   constructor(private http: HttpClient) {}
 
   getHistoriales(): Observable<Historial[]> {
-    return this.http.get<Historial[]>(`${this.apiUrl}/historiales`);
+    return this.http.get<Historial[]>(`${this.apiUrl}`);
   }
 
-  addHistorial(historial: Partial<Historial>): Observable<Historial> {
-    return this.http.post<Historial>(this.apiUrl, historial);
+  addHistorial(historial: Partial<Historial>) {
+    return this.http.post(this.apiUrl, historial);
   }
 
-  updateHistorial(id: string, historial: Partial<Historial>): Observable<Historial> {
-    return this.http.put<Historial>(`${this.apiUrl}/${id}`, historial);
+  updateHistorial(id: string, historial: Partial<Historial>) {
+    return this.http.put(`${this.apiUrl}/${id}`, historial);
   }
 
-  deleteHistorial(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  deleteHistorial(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

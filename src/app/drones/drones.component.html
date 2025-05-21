@@ -47,8 +47,8 @@
       </div>
       <div class="card-actions">
         <!-- Si el dron es del usuario actual -->
-        <button *ngIf="isOwner(drone)" (click)="onEdit(drone)">Editar</button>
-        <button *ngIf="isOwner(drone)" (click)="onDelete(drone)">Eliminar</button>
+        <button  (click)="onEdit(drone)">Editar</button>
+        <button  (click)="onDelete(drone)">Eliminar</button>
 
         <!-- Si el dron NO es del usuario actual y está disponible -->
         <button
